@@ -1,0 +1,62 @@
+canvas {
+    margin-top: 2%;
+    height: 100%;
+    width: 40%;
+    border: solid 1px #000 ;
+    margin-left: 30%;
+    border-radius: 1%;
+}
+
+#menu{
+margin-top: 3%;
+}
+div #zone,
+#material,
+#color {
+    border: solid black 1px;
+    border-radius: 10px;
+    background-image: radial-gradient(circle closest-corner, white, #80808061);
+    text-align: center;
+}
+
+div#material  img,
+div#color  img {
+    border-radius: 50px;
+    height: 32px;
+    width: 32px;
+}
+div#zone,
+div#material ,
+div#color{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    cursor:pointer;   
+   
+}
+
+div.selected:hover{
+    background-color: rgba(83, 81, 81, 0.31);
+    background-position: center;
+    border-radius: 10px;
+    
+}
+
+#side-bar{
+    float: right;
+    display: block;
+    margin-right: 15%;
+    margin-top: 2%;
+    border: solid 1px black;
+    width: 12%;
+    padding:2%;
+    background-image: radial-gradient(circle closest-corner, white, #80808061);
+}
+#side-bar * {
+   cursor: pointer;
+   padding: 10%;
+}
+
+#side-bar *:hover{
+    border-radius: 10px;
+    background-color: rgba(83, 81, 81, 0.31);
+}

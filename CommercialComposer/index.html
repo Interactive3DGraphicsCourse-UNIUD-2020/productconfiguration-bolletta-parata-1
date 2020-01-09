@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CommerciaComposer Bolletta & Parata</title>
+    <link rel="stylesheet" href="master.css">
+    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="bootstrap-4_3_1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <canvas></canvas>
+
+    <div id="side-bar">
+        <div id="side-bar-zona"  onclick="replace_side('material', 'color','zone')"> ZONA </div>
+        <div id="side-bar-materiale" onclick="replace_side('color','zone','material')"> MATERIALE </div>
+        <div id="side-bar-colore" onclick="replace_side('zone','material','color')"> COLORE </div>
+    </div>
+    <div id="menu" class="container">
+        <div class="row" id="zone" style="display: flex;" onclick="replace('zone','material')" ">
+            <div class=" col-sm" id="zona_1" onclick="getValue(this.id)">
+            <div class="selected">Zona 1</div>
+        </div>
+        <div class="col-sm" id="zona_2" onclick="getValue(this.id)">
+            <div class="selected">Zona 2</div>
+        </div>
+        <div class="col-sm" id="zona_3" onclick="getValue(this.id)">
+            <div class="selected">Zona 3</div>
+        </div>
+    </div>
+    <div class="row" id="material" style="display:none;" onclick="replace('material','color')">
+        <div class="col-sm" id="material_1" onclick="getValue(this.id)">
+            <div class="selected">Plastica<br><img src="img/materials/material_1.png"></div>
+        </div>
+        <div class="col-sm" id="material_2" onclick="getValue(this.id)">
+            <div class="selected">Metallo<br><img src="img/materials/material_2.png"></div>
+        </div>
+        <div class="col-sm" id="material_3" onclick="getValue(this.id)">
+            <div class="selected">
+                Legno
+                <br>
+                <img src="img/materials/material_3.jpg">
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="color" style="display:none;" onclick="replace('color','zone')">
+        <div class="col-sm" id="color_1" onclick="getValue(this.id)">
+            <div class="selected"> Color 1 <br><img src="img/colors/color_1.png">
+            </div>
+        </div>
+        <div class="col-sm" id="color_2" onclick="getValue(this.id)">
+            <div class="selected">Color 2 <br><img src="img/colors/color_2.png"> </div>
+        </div>
+        <div class="col-sm" id="color_3" onclick="getValue(this.id)">
+            <div class="selected">Color 3 <br><img src="img/colors/color_3.png">
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>
