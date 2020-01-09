@@ -228,6 +228,7 @@
 	
 	<script src="lib/OBJLoader.js"></script>
 	<script src="lib/stats.min.js"></script>
+	<script src="lib/CopyShader.js"></script>
 	<script src="lib/OrbitControls.js"></script>
 	<script src="lib/EffectComposer.js"></script>
 	<script src="lib/ShaderPass.js"></script>
@@ -238,19 +239,64 @@
 </head>
 
 <body>
+	<div id="fluttua">
+		<div id="canvasRender"></div>
+		
+		
+		<div id="side-bar">
+			<div id="side-bar-zona"  onclick="replace_side('material', 'color','zone')"> ZONA </div>
+			<div id="side-bar-materiale" onclick="replace_side('color','zone','material')"> MATERIALE </div>
+			<div id="side-bar-colore" onclick="replace_side('zone','material','color')"> COLORE </div>
+		</div>
+	</div>
+    <div id="menu" class="container">
+        <div class="row" id="zone" style="display: flex;" onclick="replace('zone','material')" ">
+            <div class=" col-sm" id="zona_1" onclick="getValue(this.id)">
+            <div class="selected">Zona 1</div>
+        </div>
+        <div class="col-sm" id="zona_2" onclick="getValue(this.id)">
+            <div class="selected">Zona 2</div>
+        </div>
+        <div class="col-sm" id="zona_3" onclick="getValue(this.id)">
+            <div class="selected">Zona 3</div>
+        </div>
+    </div>
+    <div class="row" id="material" style="display:none;" onclick="replace('material','color')">
+        <div class="col-sm" id="material_1" onclick="getValue(this.id)">
+            <div class="selected">Plastica<br><img src="img/materials/material_1.png"></div>
+        </div>
+        <div class="col-sm" id="material_2" onclick="getValue(this.id)">
+            <div class="selected">Metallo<br><img src="img/materials/material_2.png"></div>
+        </div>
+        <div class="col-sm" id="material_3" onclick="getValue(this.id)">
+            <div class="selected">
+                Legno
+                <br>
+                <img src="img/materials/material_3.jpg">
+            </div>
+        </div>
+    </div>
 
-    <canvas id="canvasRender">
-	
-	
-	
-	</canvas>
-	
-	<script>
+    <div class="row" id="color" style="display:none;" onclick="replace('color','zone')">
+        <div class="col-sm" id="color_1" onclick="getValue(this.id)">
+            <div class="selected"> Color 1 <br><img src="img/colors/color_1.png">
+            </div>
+        </div>
+        <div class="col-sm" id="color_2" onclick="getValue(this.id)">
+            <div class="selected">Color 2 <br><img src="img/colors/color_2.png"> </div>
+        </div>
+        <div class="col-sm" id="color_3" onclick="getValue(this.id)">
+            <div class="selected">Color 3 <br><img src="img/colors/color_3.png">
+            </div>
+        </div>
+    </div>
+<script>
 		
 		
 			var scene, camera, renderer, stats, composer;
 			var OBJModel = {model:null, material:Array()};
 			var textureCube;
+			var renderCanvas;
 			var updateProcess;
 			var textureIndex1 = 2, textureIndex2 = 1;
 			var TextureCopertura = new Array("Copertura_Tessuto1","Copertura_Tessuto2","Copertura_Tessuto3");
@@ -487,12 +533,13 @@
 			
 			function Start(){
 				
+				renderCanvas = document.getElementById("canvasRender");
 				
 				scene  		 = new THREE.Scene();		
-				camera 		 = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 10);	
+				camera 		 = new THREE.PerspectiveCamera( 60, renderCanvas.offsetWidth / (renderCanvas.offsetWidth*0.75), 0.01, 10);	
 				
 				renderer	 = new THREE.WebGLRenderer({antialias:true});	
-				renderer.setPixelRatio( isMobile()? window.devicePixelRatio/2 : window.devicePixelRatio);					
+				renderer.setPixelRatio( isMobile()? renderCanvas.devicePixelRatio/2 : renderCanvas.devicePixelRatio);					
 				
 				stats 		 = new Stats();
 												
@@ -505,7 +552,7 @@
 				controls.target = new THREE.Vector3(0,0.08, 0);					
 				
 				
-				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( renderCanvas.offsetWidth, (renderCanvas.offsetWidth*0.75) );
 				renderer.physicallyCorrectLights = true;
 								
 				stats.domElement.style.position  = 'absolute';																
@@ -517,8 +564,8 @@
 								
 				
 
-				document.getElementById("canvasRender").innerHTML += ( renderer.domElement );															
-				document.getElementById("canvasRender").innerHTML += ( stats.domElement    );
+				renderCanvas.appendChild( renderer.domElement );															
+				renderCanvas.appendChild( stats.domElement    );
 							
 				
 				
@@ -551,6 +598,8 @@
 				window.addEventListener( 'resize', onWindowResize, false );
 				window.addEventListener("orientationchange", onWindowResize, false);
 				
+				onWindowResize();
+				
 				loading(Update());
 				
 			}
@@ -567,64 +616,17 @@
 			}
 			
 			function onWindowResize(){
-				camera.aspect = window.innerWidth/window.innerHeight;
+				camera.aspect = renderCanvas.offsetWidth/(renderCanvas.offsetWidth*0.75);
 				camera.updateProjectionMatrix();
-				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( renderCanvas.offsetWidth, (renderCanvas.offsetWidth*0.75) );
 				renderer.setPixelRatio( isMobile()? window.devicePixelRatio/2 : window.devicePixelRatio);					
-				
+				document.getElementById("fluttua").style.height = (renderCanvas.offsetWidth*0.75)+"px";
 			}
 				
 			
 			
 			
 		</script>
-
-    <div id="side-bar">
-        <div id="side-bar-zona"  onclick="replace_side('material', 'color','zone')"> ZONA </div>
-        <div id="side-bar-materiale" onclick="replace_side('color','zone','material')"> MATERIALE </div>
-        <div id="side-bar-colore" onclick="replace_side('zone','material','color')"> COLORE </div>
-    </div>
-    <div id="menu" class="container">
-        <div class="row" id="zone" style="display: flex;" onclick="replace('zone','material')" ">
-            <div class=" col-sm" id="zona_1" onclick="getValue(this.id)">
-            <div class="selected">Zona 1</div>
-        </div>
-        <div class="col-sm" id="zona_2" onclick="getValue(this.id)">
-            <div class="selected">Zona 2</div>
-        </div>
-        <div class="col-sm" id="zona_3" onclick="getValue(this.id)">
-            <div class="selected">Zona 3</div>
-        </div>
-    </div>
-    <div class="row" id="material" style="display:none;" onclick="replace('material','color')">
-        <div class="col-sm" id="material_1" onclick="getValue(this.id)">
-            <div class="selected">Plastica<br><img src="img/materials/material_1.png"></div>
-        </div>
-        <div class="col-sm" id="material_2" onclick="getValue(this.id)">
-            <div class="selected">Metallo<br><img src="img/materials/material_2.png"></div>
-        </div>
-        <div class="col-sm" id="material_3" onclick="getValue(this.id)">
-            <div class="selected">
-                Legno
-                <br>
-                <img src="img/materials/material_3.jpg">
-            </div>
-        </div>
-    </div>
-
-    <div class="row" id="color" style="display:none;" onclick="replace('color','zone')">
-        <div class="col-sm" id="color_1" onclick="getValue(this.id)">
-            <div class="selected"> Color 1 <br><img src="img/colors/color_1.png">
-            </div>
-        </div>
-        <div class="col-sm" id="color_2" onclick="getValue(this.id)">
-            <div class="selected">Color 2 <br><img src="img/colors/color_2.png"> </div>
-        </div>
-        <div class="col-sm" id="color_3" onclick="getValue(this.id)">
-            <div class="selected">Color 3 <br><img src="img/colors/color_3.png">
-            </div>
-        </div>
-    </div>
 
     </div>
 </body>
