@@ -1,60 +1,75 @@
+*{
+    font-size: 1.5vw;
+}
 #canvasRender {
-	float : left;
-    margin-top: 2%;
+    float: left;
+    margin-top: 1%;
     width: 40%;
-    border: solid 1px #000 ;
+
     margin-left: 30%;
     border-radius: 1%;
 }
 
-#menu{
-margin-top: 3%;
-width:100%;
+#composerRenderer {
+    width: 100%;
+    max-width: 100%;
 }
+
+#side-bar {
+    float: left;
+    margin-left: 2%;
+    display: block;
+    margin-top: 2%;
+    border: solid 1px black;
+    width: 20%;
+    padding: 2%;
+    background-image: radial-gradient(circle closest-corner, white, #80808061);
+    border-radius: 10px;
+   
+    
+}
+
+#side-bar * {
+    cursor: pointer;
+    padding: 5%;
+}
+
+#side-bar *:hover {
+    border-radius: 10px;
+    background-color: rgba(83, 81, 81, 0.31);
+}
+
+
+#menu {
+    margin-top: 3%;
+
+}
+
 div #zone,
-#material,
+#material,#material_copertura,
 #color {
     border: solid black 1px;
     border-radius: 10px;
     background-image: radial-gradient(circle closest-corner, white, #80808061);
     text-align: center;
-	float:left;
+    float: left;
     padding-bottom: 5px;
     padding-top: 5px;
-    cursor:pointer;  
-	
+    cursor: pointer;
+    width: 100%;
+
 }
 
-div#material  img,
-div#color  img {
+div#material img,#material_copertura img,
+div#color img {
     border-radius: 50px;
     height: 32px;
     width: 32px;
 }
 
-div.selected:hover{
+div.selected:hover {
     background-color: rgba(83, 81, 81, 0.31);
     background-position: center;
     border-radius: 10px;
-    
-}
 
-#side-bar{
-    float: right;
-    display: block;
-    margin-right: 15%;
-    margin-top: 2%;
-    border: solid 1px black;
-    width: 12%;
-    padding:2%;
-    background-image: radial-gradient(circle closest-corner, white, #80808061);
-}
-#side-bar * {
-   cursor: pointer;
-   padding: 10%;
-}
-
-#side-bar *:hover{
-    border-radius: 10px;
-    background-color: rgba(83, 81, 81, 0.31);
 }
