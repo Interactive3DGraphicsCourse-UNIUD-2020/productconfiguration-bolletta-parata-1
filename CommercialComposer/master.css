@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
 .row{
 	margin : 0px 0px 0px 0px !important;
 }
 
 *{
     font-size: 1.5vw;
+    font-family: 'Lato', sans-serif;
+
 }
 #canvasRender {
     float: left;
     margin-top: 1%;
     width: 70%;
-
     margin-left: 15%;
     border-radius: 1%;
 }
@@ -19,31 +22,6 @@
     max-width: 100%;
 }
 
-#side-bar {
-    float: left;
-    margin-left: 2%;
-    display: block;
-    margin-top: 2%;
-    border: solid 1px black;
-    width: 20%;
-    padding: 2%;
-    background-image: radial-gradient(circle closest-corner, white, #80808061);
-    border-radius: 10px;
-   
-    
-}
-
-#side-bar * {
-    cursor: pointer;
-    padding: 5%;
-}
-
-#side-bar *:hover {
-    border-radius: 10px;
-    background-color: rgba(83, 81, 81, 0.31);
-}
-
-
 #menu {
     position : absolute;
 }
@@ -51,9 +29,9 @@
 div #zone,
 #material,#material_copertura,
 #color {
-    border: solid black 1px;
+    border: solid #e77600 1px;
     border-radius: 10px;
-    background-image: radial-gradient(circle closest-corner, white, #80808061);
+    background-image: radial-gradient(circle closest-corner, white, #e7770094);
     text-align: center;
     float: left;
     padding-bottom: 5px;
@@ -71,7 +49,7 @@ div#color img, div#zone img {
 }
 
 div.selected:hover {
-    background-color: rgba(83, 81, 81, 0.31);
+    background-color: rgba(207, 142, 1, 0.356);
     background-position: center;
     border-radius: 10px;
 

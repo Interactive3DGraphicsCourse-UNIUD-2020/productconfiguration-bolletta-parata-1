@@ -17,26 +17,30 @@ Try to make it look like a simple, but real portion of an e-commerce site, not a
 	
 ## Report
 
-Il progetto propone un compositore online di un oggetto in vendita presso un e-commerce, con la possibilità di scelta dei vari materiali e dei relativi colori che comporranno l'oggetto in vendita.
+Il progetto propone un compositore online 3D di un oggetto in vendita, in questo caso si tratta di un impotetica nuova versione di assistente vocale ECHO DOT, presso un e-commerce, con la possibilità di scelta dei vari materiali e dei relativi colori che comporranno l'oggetto in fase di acquisto.
 
 #### Interfaccia
 
 L' interfaccia si compone di un menu centrale che permetterà di scegliere :
 * la parte di superficie dell'oggetto 
-* il materiale del quale sarà composto
-* il colore del relativo materiale della superficie
+	* il materiale del quale sarà composto
+	* il colore del relativo materiale della 	superficie scelta
 	
 	![Image arrow](/textures/arrows.png)
 	
 
-Con il mouse è possibile ruotare intorno all'oggetto, mentre con il touchpad è possibile effettuare uno zoom dell'oggetto. 
+Con il mouse è possibile ruotare intorno all'oggetto, mentre con il touchpad è possibile effettuare uno zoom sull'oggetto. 
 
 
 #### BRDF Implementate:
 
 * BRDF Lambertiana
-	si può alzare o abassare il terreno andando a premere i bottoni adeguati e cliccando poi la mappa
-* BRDF ...
+	
+* Production Friendly Microfacet Sheen BRDF per la distribuzione del colore dei tessuti
+(http://www.aconty.com/pdf/s2017_pbs_imageworks_sheen.pdf)
+
+* BRDF di Burley della Disney
+(https://disney-animation.s3.amazonaws.com/library/s2012_pbs_disney_brdf_notes_v2.pdf)
 
 
 

@@ -281,13 +281,11 @@
 </head>
 
 <body>
-	<<div id="composerRenderer">
+	<h2 style="text-align:center;">Bolletta & Parata 3D Commercial Composer 2019/2020</h2>
+	<h3 style="text-align:center;">Echo Dot 4.0 </h3>
+	<!-- Canvas di rendering -->
+	<div id="composerRenderer">
 		<div id="canvasRender"></div>
-		<!--<div id="side-bar">
-			<div id="side-bar-zona" onclick="replace_side('material', 'color','material_copertura','zone')"> ZONA </div>
-			<div id="side-bar-materiale" onclick="replace_side('color','zone','material_copertura','material')">MATERIALE </div>
-			<div id="side-bar-colore" onclick="replace_side('zone','material','material_copertura','color')"> COLORE</div>
-		</div>-->
 	</div>
 	<!--MENU --->
 	<div id="menu" class="container">
@@ -297,7 +295,7 @@
 				<div class="selected">Rivestimento<br><img id="RivIma" src=""></div>
 			</div>
 			<div class="col-sm" id="zona_2" onclick="getValue(this.id); replace('zone','material_copertura')">
-				<div class="selected">Copertura<br><img id="CopIma" src=""></div>
+				<div class="selected">Copertura<br><img id="CopIma" src="img/materials/material_5_cover.png"></div>
 			</div>
 		</div>
 		<!-- Materiali del rivestimento -->
@@ -331,11 +329,11 @@
 				</div>
 			</div>
 			<div class="col-sm" id="color_2" onclick="getValue(this.id)">
-				<div class="selected">Verde <br><img src="img/colors/color_3.png">
+				<div class="selected">Verde <br><img src="img/colors/color_2.png">
 				</div>
 			</div>
 			<div class="col-sm" id="color_3" onclick="getValue(this.id)">
-				<div class="selected">Blu <br><img src="img/colors/color_2.png"> </div>
+				<div class="selected">Blu <br><img src="img/colors/color_3.png"> </div>
 			</div>
 			<div class="col-sm" id="color_4" onclick="getValue(this.id)">
 				<div class="selected">Default <br><img id="defaultColor" src=""> </div>
@@ -545,7 +543,7 @@
 					OBJModel.material[0].uniforms.textureRepeat.value = MaterialValue(0).repeat;
 					OBJModel.material[0].uniforms.Color.value = MaterialValue(0).color;
 					
-					document.getElementById("CopIma").src = "Texture/" + textureParametersPlastica.material + "_Diffuse.jpg";
+					//document.getElementById("CopIma").src = "Texture/" + textureParametersPlastica.material + "_Diffuse.jpg";
 				}
 				MaterialCopertura.diffuseMap.minFilter = THREE.LinearMipmapLinearFilter;
 				MaterialCopertura.specularMap.minFilter = THREE.LinearMipmapLinearFilter;
