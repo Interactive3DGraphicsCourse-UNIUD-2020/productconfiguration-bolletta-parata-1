@@ -14,6 +14,7 @@ var idx1=0; //0 : copertura ; 1 : plasticaccia sora e sotto
 var colore1 = new THREE.Vector3(1.0,1.0,1.0), colore2 = new THREE.Vector3(1.0,1.0,1.0);
 
 function getValue (id) {
+	var file=document.getElementById("defaultColor");
     switch(id){
 		case "zona_1":
 			idx1=0;
@@ -37,17 +38,37 @@ function getValue (id) {
 			else colore2 = new THREE.Vector3(0.005,0.0001,1.0);
 			materiali();
 			break;
+		case "color_4":
+			if(idx1==0) colore1 = new THREE.Vector3(1.0,1.0,1.0);
+			else colore2 = new THREE.Vector3(1.0,1.0,1.0);
+			materiali();
+			break;
 		case "material_1":
-			if(idx1==0) textureIndex1 = 0;
-			else textureIndex2=0;
+			if(idx1==0) {
+				textureIndex1 = 0;
+				file.src=("Texture/" +TextureCopertura[textureIndex1]+"_Diffuse.jpg");
+			}else{
+				textureIndex2=0;
+				file.src=("Texture/" +TexturePlastica[textureIndex2]+"_Diffuse.jpg");
+			}
 			break;
 		case "material_2":
-			if(idx1==0) textureIndex1 = 1;
-			else textureIndex2=1;
+			if(idx1==0) {
+				textureIndex1 = 1;
+				file.src=("Texture/" +TextureCopertura[textureIndex1]+"_Diffuse.jpg");
+			}else{
+				textureIndex2=1;
+				file.src=("Texture/" +TexturePlastica[textureIndex2]+"_Diffuse.jpg");
+			}
 			break;
 		case "material_3":
-			if(idx1==0) textureIndex1 = 2;
-			else textureIndex2=2;
+			if(idx1==0) {
+				textureIndex1 = 2;
+				file.src=("Texture/" +TextureCopertura[textureIndex1]+"_Diffuse.jpg");
+			}else{
+				textureIndex2=2;
+				file.src=("Texture/" +TexturePlastica[textureIndex2]+"_Diffuse.jpg");
+			}
 			break;
 	}
     return false;
