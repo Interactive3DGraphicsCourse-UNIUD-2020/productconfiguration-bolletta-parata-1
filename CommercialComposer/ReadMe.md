@@ -59,24 +59,25 @@ Con il mouse è possibile ruotare intorno all'oggetto, mentre con il touchpad è
 	* Collegamento dell'interfaccia utente con l'oggetto modellato
 
 * 08/01/20:
-	* Implemetazione  BRDF secondaria  
-		* aggiunta luci da set fotografico per l'illuminazione completa dell'oggetto 
+	* Implemetazione  BRDF Dinsey  
+		* aggiunta luci tipo set fotografico per l'illuminazione completa dell'oggetto 
 	* Implementazione luce ambientale con l'utilizzo della Cubemap
+
+* 09/01/20
+	* Implementazione della BRDF per la simulazione dei tessuti
+	* Miglioramento menu di interazione
+	* Ottimizzazioni immagini per texture e del codice di shading
 	
  	
 #### Programmi e tecnologie utilizzate 
 
 * immagini e texture Paint.net ver: 4.205  
-* Visual Studio Code	  
+* Visual Studio Code 1.41.1  
 * editor di testo Notepad++ ver: 7.7.1  
 * server Web Apache ver: 2.4  
 * Modellazione 3D Blender ver: 2.8
 * Bootstrap 4.3.1
 * HTML 5
 * CSS3
-* PHP
-
-
-#### Shader vari
-
+* PHP 7.1
 
