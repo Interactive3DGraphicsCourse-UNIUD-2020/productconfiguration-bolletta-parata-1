@@ -167,10 +167,10 @@
 			if(type==1){
 				BRDF = BRDF*(1.0-min(max(0.0, length(vPosition)), 1.0))+((vec3(1.0-FattBlend))*Burley * (cloth))+cloth*0.05;
 			}else{
-				BRDF += Burley;
+				BRDF += 1.0/length(lPosition)*Burley;
 			}
 			
-			return 1.0/length(lPosition)*nDotl*BRDF/2.0;
+			return nDotl*BRDF/2.0;
 			
 		}
 		
@@ -365,7 +365,7 @@
 				roughnessMap : 	loadTexture( "Texture/" + textureParametersDisplay.material + "_Roughness.jpg" ),
 				normalMap :	 	loadTexture( "Texture/" + textureParametersDisplay.material + "_Normal.jpg" ),
 				emissionMap :	loadTexture( "Texture/" + textureParametersDisplay.material + "_Emission.jpg" ),
-				emission : 1.5,
+				emission : 0.8,
 				roughness : MaterialRoughness[textureIndex1][2],
 				repeat : new THREE.Vector2(textureParametersDisplay.repeatS, textureParametersDisplay.repeatT),
 				type : 0
