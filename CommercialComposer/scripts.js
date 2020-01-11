@@ -50,6 +50,7 @@ function getValue (id) {
 			}else{
 				textureIndex2=0;
 				file.src=("Texture/" +TexturePlastica[textureIndex2]+"_Diffuse.jpg");
+				document.getElementById("CopIma").src = "img/materials/material_4_cover.png";
 			}
 			break;
 		case "material_2":
@@ -59,6 +60,7 @@ function getValue (id) {
 			}else{
 				textureIndex2=1;
 				file.src=("Texture/" +TexturePlastica[textureIndex2]+"_Diffuse.jpg");
+				document.getElementById("CopIma").src = "img/materials/material_5_cover.png";
 			}
 			break;
 		case "material_3":
@@ -68,6 +70,7 @@ function getValue (id) {
 			}else{
 				textureIndex2=2;
 				file.src=("Texture/" +TexturePlastica[textureIndex2]+"_Diffuse.jpg");
+				document.getElementById("CopIma").src = "img/materials/material_2_cover.png";
 			}
 			break;
 	}

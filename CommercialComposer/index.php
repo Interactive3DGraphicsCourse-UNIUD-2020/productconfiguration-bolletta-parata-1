@@ -200,7 +200,7 @@
 			//vec3 LambertianD = CustomLambertianDiffuse(cdiff,nDotv,roughness);
 			if(type==1){
 				float cloth = distributionCloth((roughness), sqrt(nDotv)*0.8+nDoth*0.2);											//cloth distribution
-				cloth = max(cloth, 0.0005);																							//rimuove colore troppo scuro
+				cloth = max(cloth, 0.0025);																							//rimuove colore troppo scuro
 			
 				BRDF += ((vec3(1.0-FattBlend))*Burley * (cloth))*(min(max(0.0, 1.0/length(vPosition)), 1.0));						//Diffuse part con tessuto							
 			}else{
@@ -543,7 +543,7 @@
 					OBJModel.material[0].uniforms.textureRepeat.value = MaterialValue(0).repeat;
 					OBJModel.material[0].uniforms.Color.value = MaterialValue(0).color;
 					
-					//document.getElementById("CopIma").src = "Texture/" + textureParametersPlastica.material + "_Diffuse.jpg";
+					
 				}
 				MaterialCopertura.diffuseMap.minFilter = THREE.LinearMipmapLinearFilter;
 				MaterialCopertura.specularMap.minFilter = THREE.LinearMipmapLinearFilter;
