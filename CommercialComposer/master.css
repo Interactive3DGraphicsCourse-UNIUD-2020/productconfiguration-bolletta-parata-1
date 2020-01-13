@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-.row{
-	margin : 0px 0px 0px 0px !important;
+.row {
+    margin: 0px 0px 0px 0px !important;
 }
 
-*{
+* {
     font-size: 1.5vw;
     font-family: 'Lato', sans-serif;
 
 }
+
 #canvasRender {
     float: left;
     margin-top: 1%;
@@ -23,11 +24,12 @@
 }
 
 #menu {
-    position : absolute;
+    position: absolute;
 }
 
 div #zone,
-#material,#material_copertura,
+#material,
+#material_copertura,
 #color {
     border: solid #e77600 1px;
     border-radius: 10px;
@@ -41,8 +43,10 @@ div #zone,
 
 }
 
-div#material img,#material_copertura img,
-div#color img, div#zone img {
+div#material img,
+#material_copertura img,
+div#color img,
+div#zone img {
     border-radius: 50px;
     height: 32px;
     width: 32px;
@@ -52,5 +56,47 @@ div.selected:hover {
     background-color: rgba(207, 142, 1, 0.356);
     background-position: center;
     border-radius: 10px;
+
+}
+
+
+nav {
+    margin-bottom: 2eu;
+    line-height: 6vw;
+
+}
+
+nav.navbar-dark.bg-dark {
+    color: #e77600;
+    text-align: center;
+}
+
+.footer-bottom {
+    margin-top: 2em;
+    border-top: 1px solid #DDDDDD;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.footer-bottom p.pull-left {
+    padding-top: 6px;
+    font-size: 1.25em
+}
+
+.footer-bottom span {
+    float: right;
+    font-size: 1em;
+
+}
+
+#prezzo {
+    font-size: 3vw;
+    color: #e77600;
+}
+
+#rivestimento,
+#copertura {
+    font-size: 2.5vw;
+
 
 }

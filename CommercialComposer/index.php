@@ -281,8 +281,12 @@
 </head>
 
 <body>
-	<h2 style="text-align:center;">Bolletta & Parata 3D Commercial Composer 2019/2020</h2>
-	<h3 style="text-align:center;">Echo Dot 4.0 </h3>
+<nav class="navbar-dark bg-dark">
+		<a class="navbar-brand navbar-right"> Bolletta & Loris Shop </a>
+	</nav>
+	<br>
+
+
 	<!-- Canvas di rendering -->
 	<div id="composerRenderer">
 		<div id="canvasRender"></div>
@@ -291,7 +295,7 @@
 	<div id="menu" class="container">
 		<!-- Zone -->
 		<div class="row" id="zone" style="display: flex;">
-			<div class=" col-sm" id="zona_1" onclick="getValue(this.id); replace('zone','material')">
+			<div class=" col-sm" id="zona_1" onclick="getValue(this.id); replace('zone','material');">
 				<div class="selected">Rivestimento<br><img id="RivIma" src=""></div>
 			</div>
 			<div class="col-sm" id="zona_2" onclick="getValue(this.id); replace('zone','material_copertura')">
@@ -300,42 +304,48 @@
 		</div>
 		<!-- Materiali del rivestimento -->
 		<div class="row" id="material" style="display:none;" onclick="replace('material','color')">
-			<div class="col-sm" id="material_1" onclick="getValue(this.id)">
+			<div class="col-sm" id="material_1"
+				onclick="getValue(this.id); valoreRivestimento('Carbonio');getRivestimento(this.id);">
 				<div class="selected">Carbonio<br><img src="img/materials/material_1.jpg"></div>
 			</div>
-			<div class="col-sm" id="material_2" onclick="getValue(this.id)">
+			<div class="col-sm" id="material_2"
+				onclick="getValue(this.id); valoreRivestimento('Metallo');getRivestimento(this.id);">
 				<div class="selected">Metallo<br><img src="img/materials/material_6.jpg"></div>
 			</div>
-			<div class="col-sm" id="material_3" onclick="getValue(this.id)">
+			<div class="col-sm" id="material_3"
+				onclick="getValue(this.id); valoreRivestimento('Tessuto');getRivestimento(this.id);">
 				<div class="selected">Tessuto<br><img src="img/materials/material_3.jpg"></div>
 			</div>
 		</div>
 		<!-- Materiali della copertura-->
 		<div class="row" id="material_copertura" style="display:none;" onclick="replace('material_copertura','color')">
-			<div class="col-sm" id="material_1" onclick="getValue(this.id)">
+			<div class="col-sm" id="material_1"
+				onclick="getValue(this.id) ; valoreCopertura('Plastica');getCopertura(this.id);">
 				<div class="selected">Plastica<br><img src="img/materials/material_4.jpg"></div>
 			</div>
-			<div class="col-sm" id="material_2" onclick="getValue(this.id)">
+			<div class="col-sm" id="material_2"
+				onclick="getValue(this.id); valoreCopertura('Legno');getCopertura(this.id);">
 				<div class="selected">Legno<br><img src="img/materials/material_5.jpg"></div>
 			</div>
-			<div class="col-sm" id="material_3" onclick="getValue(this.id)">
+			<div class="col-sm" id="material_3"
+				onclick="getValue(this.id); valoreCopertura('Ceramica');getCopertura(this.id);">
 				<div class="selected">Ceramica<br><img src="img/materials/material_2.jpg"></div>
 			</div>
 		</div>
 		<!--Colore-->
 		<div class="row" id="color" style="display:none;" onclick="replace('color','zone')">
-			<div class="col-sm" id="color_1" onclick="getValue(this.id)">
+			<div class="col-sm" id="color_1" onclick="getValue(this.id);calcolaPrezzo();">
 				<div class="selected"> Rosso <br><img src="img/colors/color_1.png">
 				</div>
 			</div>
-			<div class="col-sm" id="color_2" onclick="getValue(this.id)">
+			<div class="col-sm" id="color_2" onclick="getValue(this.id);calcolaPrezzo();">
 				<div class="selected">Verde <br><img src="img/colors/color_2.png">
 				</div>
 			</div>
-			<div class="col-sm" id="color_3" onclick="getValue(this.id)">
+			<div class="col-sm" id="color_3" onclick="getValue(this.id);calcolaPrezzo();">
 				<div class="selected">Blu <br><img src="img/colors/color_3.png"> </div>
 			</div>
-			<div class="col-sm" id="color_4" onclick="getValue(this.id)">
+			<div class="col-sm" id="color_4" onclick="getValue(this.id);calcolaPrezzo();">
 				<div class="selected">Default <br><img id="defaultColor" src=""> </div>
 			</div>
 		</div>
@@ -692,6 +702,36 @@
 		</script>
 
     </div>
+	<br>
+	<br>
+
+	<div class="card text-center">
+		<div class="card-header">
+			<h3>Configura il tuo nuovo Assistente vocale!</h3>
+		</div>
+		<div class="card-body">
+			<h4 class="card-title">Configurazione attuale:</h4>
+			<h5 class="card-text text-left">Materiale riverstimento : <span id="rivestimento"> Stoffa</span></h5>
+			<h5 class="card-text text-left">Materiale copertura : <span id="copertura">Legno</span></h5>
+			<br>
+			<h4 class="card-text text-left">Prezzo : <span id="prezzo">40</span> euro.</h4>
+			<a href="#" class="btn btn-warning">Aggiungi al carrello</a>
+		</div>
+		<div class="card-footer text-muted">
+			Approfitta di quest'occasione!
+		</div>
+	</div>
+
+
+
+	<div class="footer-bottom bg-dark">
+		<div class="container">
+			<p class="pull-left copyright text-warning"> Copyright © CommercialComposer di Bolletta&Parata. <span> All
+					right reserved.</span> </p>
+
+		</div>
+	</div>
+	<!--/.footer-bottom-->
 </body>
 
 </html>
