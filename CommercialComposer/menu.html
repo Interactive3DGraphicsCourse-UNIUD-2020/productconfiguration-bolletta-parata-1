@@ -1,0 +1,57 @@
+<div id="menu" class="container">
+    <!-- Zone -->
+    <div class="row" id="zone" style="display: flex;">
+        <div class=" col-sm" id="zona_1" onclick="getValue(this.id); replace('zone','material');">
+            <div class="selected">Rivestimento<br><img id="RivIma" src=""></div>
+        </div>
+        <div class="col-sm" id="zona_2" onclick="getValue(this.id); replace('zone','material_copertura')">
+            <div class="selected">Copertura<br><img id="CopIma" src="img/materials/material_5_cover.png"></div>
+        </div>
+    </div>
+    <!-- Materiali del rivestimento -->
+    <div class="row" id="material" style="display:none;" onclick="replace('material','color')">
+        <div class="col-sm" id="material_1"
+            onclick="getValue(this.id); valoreRivestimento('Carbonio');getRivestimento(this.id);">
+            <div class="selected">Carbonio<br><img src="img/materials/material_1.jpg"></div>
+        </div>
+        <div class="col-sm" id="material_2"
+            onclick="getValue(this.id); valoreRivestimento('Metallo');getRivestimento(this.id);">
+            <div class="selected">Metallo<br><img src="img/materials/material_6.jpg"></div>
+        </div>
+        <div class="col-sm" id="material_3"
+            onclick="getValue(this.id); valoreRivestimento('Tessuto');getRivestimento(this.id);">
+            <div class="selected">Tessuto<br><img src="img/materials/material_3.jpg"></div>
+        </div>
+    </div>
+    <!-- Materiali della copertura-->
+    <div class="row" id="material_copertura" style="display:none;" onclick="replace('material_copertura','color')">
+        <div class="col-sm" id="material_1"
+            onclick="getValue(this.id) ; valoreCopertura('Plastica');getCopertura(this.id);">
+            <div class="selected">Plastica<br><img src="img/materials/material_4.jpg"></div>
+        </div>
+        <div class="col-sm" id="material_2"
+            onclick="getValue(this.id); valoreCopertura('Legno');getCopertura(this.id);">
+            <div class="selected">Legno<br><img src="img/materials/material_5.jpg"></div>
+        </div>
+        <div class="col-sm" id="material_3"
+            onclick="getValue(this.id); valoreCopertura('Ceramica');getCopertura(this.id);">
+            <div class="selected">Ceramica<br><img src="img/materials/material_2.jpg"></div>
+        </div>
+    </div>
+    <!--Colore-->
+    <div class="row" id="color" style="display:none;" onclick="replace('color','zone')">
+        <div class="col-sm" id="color_1" onclick="getValue(this.id);calcolaPrezzo();">
+            <div class="selected"> Rosso <br><img src="img/colors/color_1.png">
+            </div>
+        </div>
+        <div class="col-sm" id="color_2" onclick="getValue(this.id);calcolaPrezzo();">
+            <div class="selected">Verde <br><img src="img/colors/color_2.png">
+            </div>
+        </div>
+        <div class="col-sm" id="color_3" onclick="getValue(this.id);calcolaPrezzo();">
+            <div class="selected">Blu <br><img src="img/colors/color_3.png"> </div>
+        </div>
+        <div class="col-sm" id="color_4" onclick="getValue(this.id);calcolaPrezzo();">
+            <div class="selected">Default <br><img id="defaultColor" src=""> </div>
+        </div>
+    </div>

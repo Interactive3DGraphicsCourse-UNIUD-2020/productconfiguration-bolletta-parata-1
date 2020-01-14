@@ -1,36 +1,37 @@
+//Replace vari menu
 function replace(hide, show) {
 	document.getElementById(hide).style.display = "none";
 	document.getElementById(show).style.display = "flex";
 }
-
+//Replace menu colori
 function replace_side(hide, hide_2, hide_3, show) {
 	document.getElementById(hide).style.display = "none";
 	document.getElementById(hide_2).style.display = "none";
 	document.getElementById(hide_3).style.display = "none";
 	document.getElementById(show).style.display = "flex";
 }
-
+//Modifica tipologia Rivestimento
 function valoreRivestimento(replace) {
 	document.getElementById("rivestimento").innerHTML = replace;
 }
-
+//Modifica materiale Copertura
 function valoreCopertura(replace) {
 	document.getElementById("copertura").innerHTML = replace;
 }
-
+//Catturano il tipo di Rivestimento e Copertura
 var tipoRivestimento;
-function getRivestimento(rivestimento){
-	
-	tipoRivestimento= rivestimento;
-	console.log(tipoRivestimento);
+var tipoCopertura;
+
+function getRivestimento(rivestimento) {
+	tipoRivestimento = rivestimento;
 }
 
-var tipoCopertura;
-function getCopertura(copertura){
-	tipoCopertura= copertura;
+function getCopertura(copertura) {
+	tipoCopertura = copertura;
 }
+//Calcola il prezzo dell'articolo in base ai materiali scelti
 function calcolaPrezzo() {
-	
+
 	var prezzoRivestimento = 0;
 	var prezzoCopertura = 0;
 	var prezzoFinale = 0;
@@ -43,7 +44,7 @@ function calcolaPrezzo() {
 	} else {
 		prezzoRivestimento = 20;
 	}
- //Plastica,Legno,Ceramica
+	//Plastica,Legno,Ceramica
 	if (tipoCopertura == 'material_1') {
 		prezzoCopertura = 15;
 	} else if (tipoCopertura == 'material_2') {
@@ -56,7 +57,7 @@ function calcolaPrezzo() {
 	document.getElementById("prezzo").innerHTML = prezzoFinale;
 }
 
-
+//Individua come modificare i materiali del rivestimento e della copertura
 var idx1 = 0; //0 : copertura ; 1 : plasticaccia sora e sotto
 var colore1 = new THREE.Vector3(1.0, 1.0, 1.0),
 	colore2 = new THREE.Vector3(1.0, 1.0, 1.0);
