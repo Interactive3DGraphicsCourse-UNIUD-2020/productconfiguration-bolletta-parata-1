@@ -13,7 +13,7 @@ Your goal is to build a Web application (a HTML page) that:
 Try to make it look like a simple, but real portion of an e-commerce site, not a three.js example: choose carefully colors, fonts, images, and icons, also taking inspiration from real web sites. Before starting, search the web for existing 3D configurators. Note down what you like and don't like, and try to produce a result as professional as possible.
 
 ## Avvertenze
-	
+	E' necessario l'utilizzo di un web server per poter usufruire del funzionamento del productComposer
 	
 ## Report
 
@@ -31,10 +31,10 @@ L' interfaccia si compone di un menu centrale che permetterà di scegliere :
 
 Con il mouse è possibile ruotare intorno all'oggetto, mentre con il touchpad è possibile effettuare uno zoom sull'oggetto. 
 
+Nella seconda parte dell'interfaccia è possibile avere un resoconto delle scelte effettuate con la relativa variazione di prezzo secondo i materiali utilizzati per comporre l'oggetto.
+
 
 #### BRDF Implementate:
-
-* BRDF Lambertiana
 	
 * Production Friendly Microfacet Sheen BRDF per la distribuzione del colore dei tessuti
 (http://www.aconty.com/pdf/s2017_pbs_imageworks_sheen.pdf)
@@ -42,6 +42,7 @@ Con il mouse è possibile ruotare intorno all'oggetto, mentre con il touchpad è
 * BRDF di Burley della Disney
 (https://disney-animation.s3.amazonaws.com/library/s2012_pbs_disney_brdf_notes_v2.pdf)
 
+* Riflessione tramite algoritmo SmithGGXSchlickVisibility
 
 
 #### journal
@@ -67,6 +68,13 @@ Con il mouse è possibile ruotare intorno all'oggetto, mentre con il touchpad è
 	* Implementazione della BRDF per la simulazione dei tessuti
 	* Miglioramento menu di interazione
 	* Ottimizzazioni immagini per texture e del codice di shading
+
+* 13/01/20
+	* Implementazione dell'interfaccia di resoconto dei materiali scelti per la composizione
+	* Total responsive interface
+	* Impaginazione del product composer per e-commerce
+* 14/01/20
+	* Modulazione del codice con suddivisione del HTML e degli script JS
 	
  	
 #### Programmi e tecnologie utilizzate 
