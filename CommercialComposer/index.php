@@ -54,7 +54,9 @@
 
 	<?php 
 	include("composerInfo.html") ;
+	echo "<div id=\"footerF\">";
 	include("footer.html") ;
+	echo "<div>";
 	?>
 
 	

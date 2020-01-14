@@ -70,22 +70,6 @@ var FragmentShaderText=	"//variabili provenienti dal Vertex \n"+
 		"	float lambdaL = NdotV  * sqrt((-NdotL * rough2 + NdotL) * NdotL + rough2);\n"+
 		"	return 0.5 / max((lambdaV + lambdaL), 0.001);\n"+
 		"}\n"+
-		"//funzione di Diffuse:lambertian\n"+
-		"//diffuseColor : colore\n"+
-		"vec3 LambertianDiffuse(vec3 diffuseColor)\n"+
-		"{\n"+
-		"	return diffuseColor * (1.0 / PI);\n"+
-		"}\n"+
-		"// funzione Diffuse: Lambertian modificata con valori di ruvidezza\n"+
-		"// diffuseColor : il colore\n"+
-		"// roughness    : roughness\n"+
-		"// NdotV        : dot(Normale e Camera dirView)\n"+
-		"// NdotL        : dot(Normale e posLuce)\n"+
-		"// VdotH        : dot(Camera dirView e half Vector)\n"+
-		"vec3 CustomLambertianDiffuse(vec3 diffuseColor, float NdotV, float roughness)\n"+
-		"{\n"+
-		"	return diffuseColor * (1.0 / PI) * pow(NdotV, 0.5 + 0.3 * roughness);\n"+
-		"}\n"+
 		"// funzione Diffuse: Burley(Disney) Diffuse\n"+
 		"// diffuseColor : il colore\n"+
 		"// roughness    : roughness\n"+

@@ -1,17 +1,21 @@
 
 
 	var scene, camera, renderer, stats, composer;
-	var OBJModel = {model:null, material:Array()};
-	var textureCube;
-	var renderCanvas;
-	var updateProcess;
-	var numLoadTexture = new Array(-1,-1);
+	var OBJModel = {model:null, material:Array()};																				//variabile che conterrà l'oggetto 3d con i suoi materiali
+	var textureCube;																											//mappa background
+	var renderCanvas;																											//Parte di schermo du cui renderizzare 
+	var updateProcess;																											//processo di update frame
+	var numLoadTexture = new Array(-1,-1);																						//variabili per la gestione del caricamento texture
 	
-	var textureIndex1 = 2, textureIndex2 = 1;
-	var TextureCopertura = new Array("Copertura_Tessuto1","Copertura_Tessuto2","Copertura_Tessuto3");
-	var TexturePlastica = new Array("Plastic","Wood","Iron");
-	var MaterialRoughness = new Array(new Array(0.05, 0.005, 0.1), new Array(0.5, 0.2, 0.1), new Array(0.05, 0.5, 0.1));
+	//posizione delle luci
+	var posizioniLuci = new Array(new THREE.Vector3(10.0,3.0,0.0),new THREE.Vector3(-5.0,3.0,8.660),new THREE.Vector3(0.0,11.4017,0.0),new THREE.Vector3(0.0,-1000.0,0.0),new THREE.Vector3(-5.0,2.5,-8.660));
 	
+	var textureIndex1 = 2, textureIndex2 = 1;																					//indice texture selezionata
+	var TextureCopertura = new Array("Copertura_Tessuto1","Copertura_Tessuto2","Copertura_Tessuto3");							//nome texture del rivestimento
+	var TexturePlastica = new Array("Plastic","Wood","Iron");																	//nome texture della copertura
+	var MaterialRoughness = new Array(new Array(0.05, 0.005, 0.1), new Array(0.5, 0.2, 0.1), new Array(0.05, 0.5, 0.1));		//rughness dei materiali [tipoTexture] [ indice ] :: indice [ 0 =  Rivestimento, 1 = Copertura, 2 = Display ] , tipoTexture = [textureIndex1 per rivestimento, textureIndex2 per copertura]
+	
+	//Parametri per le texture
 	var textureParametersCopertura = {
 		material: TextureCopertura[textureIndex1],
 		repeatS: 0.9945,
@@ -28,6 +32,7 @@
 		repeatT: 1.0,
 	}
 				
+	//Parametri per i materiali
 	var MaterialCopertura={
 		color : new THREE.Vector3(1.0,1.0,1.0),
 		diffuseMap : 	loadTexture( "Texture/" + textureParametersCopertura.material + "_Diffuse.jpg" ),
@@ -97,6 +102,7 @@
 	
 	Start();	
 	
+	//checked mobile
 	function isMobile() { 
 	 if( navigator.userAgent.match(/Android/i)
 	 || navigator.userAgent.match(/webOS/i)
@@ -113,6 +119,7 @@
 	  }
 	}
 	
+	//caricamento texture dato path
 	function loadTexture(file, i) {
 			var texture = new THREE.TextureLoader().load( file , function ( texture ) {
 				texture.minFilter = THREE.LinearMipMapLinearFilter;
@@ -125,11 +132,13 @@
 			return texture;
 	}
 	
+	//RETURN materiale dato un indice [0: MaterialPlastica, 1: MaterialCopertura, 2: MaterialDisplay, 3: MaterialGomma, 4: MaterialButton]
 	function MaterialValue(idx){
 		var Nome=new Array(MaterialPlastica, MaterialCopertura, MaterialDisplay,  MaterialGomma, MaterialButton);
 		return Nome[idx];
 	}				
 	
+	//RETURN texture dato l'indice dl materiale e il tipo di texture idx: [0: MaterialPlastica, 1: MaterialCopertura, 2: MaterialDisplay, 3: MaterialGomma, 4: MaterialButton], type: [Diffuse, Specular, Normal, Roughness, Emission]
 	function scegli(idx, type){
 		var Nome=new Array(MaterialPlastica, MaterialCopertura, MaterialDisplay, MaterialGomma, MaterialButton);
 		
@@ -153,6 +162,7 @@
 	}
 	
 	
+	//Aggiorna materiali della copertura e del rivestimento solo se sono stati cambiati e attende che siano tutte le immagini caricate prima di modificarli
 	function materiali(){
 		cancelAnimationFrame(updateProcess);
 		numLoadTexture = new Array(-1,-1);
@@ -217,6 +227,7 @@
 		},500);
 	}
 	
+	//Loader del modello OBJ raggruppato per materiali con chiamata ad una funzione al termine
 	function loading(prosegui){
 		var loader     = new THREE.OBJLoader(); 
 		loader.load("Model/SpeacherLamp.obj",
@@ -227,7 +238,7 @@
 					{ 
 						uniforms : {
 							MAX_LIGHT 		: {type: "f", value: 4.0},
-							lightPosition  	: { type:"v3v", value: [ new THREE.Vector3(10.0,3.0,0.0),new THREE.Vector3(-5.0,3.0,8.660),new THREE.Vector3(0.0,11.4017,0.0),new THREE.Vector3(0.0,-1000.0,0.0),new THREE.Vector3(-5.0,2.5,-8.660)]},
+							lightPosition  	: { type:"v3v", value: posizioniLuci},
 							Clight    		: { type:"v3", value: new THREE.Vector3(1.0,0.95,0.8)},
 							Color    		: { type:"v3", value: MaterialValue(i).color},
 							FattBlend 		: {type: "f", value: MaterialValue(i).roughness},
@@ -287,21 +298,15 @@
 		camera.position.set( 0, 0.25,  1 );		
 		camera.rotation.x = -0.25
 						
-		
-
 		renderCanvas.appendChild( renderer.domElement );															
 		renderCanvas.appendChild( stats.domElement    );
 					
-		
-		
 		var loader = new THREE.CubeTextureLoader();
 		
-		var textureCube2 = loader.load(['Texture/cubemap/px.jpg','Texture/cubemap/nx.jpg','Texture/cubemap/py.jpg','Texture/cubemap/ny.jpg','Texture/cubemap/pz.jpg','Texture/cubemap/nz.jpg']);
-		scene.background = textureCube2;
+		textureCube = loader.load(['Texture/cubemap/posx.jpg','Texture/cubemap/negx.jpg','Texture/cubemap/posy.jpg','Texture/cubemap/negy.jpg','Texture/cubemap/posz.jpg','Texture/cubemap/negz.jpg']);
+		scene.background = textureCube;
 		
-		textureCube = loader.load(['Texture/cubemap/px2.jpg','Texture/cubemap/nx2.jpg','Texture/cubemap/py2.jpg','Texture/cubemap/ny2.jpg','Texture/cubemap/pz2.jpg','Texture/cubemap/nz2.jpg']);
-		
-		
+		//POSTPROCESSING
 		composer = new THREE.EffectComposer( renderer );
 		
 		var renderPass = new THREE.RenderPass( scene, camera );
@@ -313,9 +318,8 @@
 		fxaaPass.material.uniforms[ 'resolution' ].value.x = 1 / ( renderer.domElement.offsetWidth * renderer.getPixelRatio());
 		fxaaPass.material.uniforms[ 'resolution' ].value.y = 1 / ( renderer.domElement.offsetHeight * renderer.getPixelRatio());
 	
-		//composer.addPass( fxaaPass );
-		
-						
+		composer.addPass( fxaaPass );
+								
 		passthrough = new THREE.ShaderPass( THREE.GammaCorrectionShader);
 		passthrough.renderToScreen = true;
 		composer.addPass( passthrough );
@@ -323,12 +327,23 @@
 		window.addEventListener( 'resize', onWindowResize, false );
 		window.addEventListener("orientationchange", onWindowResize, false);
 		
+		/*
+		var light;
+		
+		for(var i=0; i<posizioniLuci.length; i++){
+			light = new THREE.PointLight(0xffffff,1,100);
+			light.position.set(posizioniLuci.x, posizioniLuci.y, posizioniLuci.z);
+			scene.add(light);
+		}
+		*/
+		
 		onWindowResize();
 		
 		loading(Update());
 		
 	}
-	var c=0, t=0,n=1.1;
+	
+	
 	function Update(){
 		updateProcess=requestAnimationFrame(Update);
 		controls.update();
@@ -342,16 +357,40 @@
 		composer.render();	
 	}
 	
+	//per la ridimensione della pagina
 	function onWindowResize(){
-		camera.aspect = renderCanvas.offsetWidth/(renderCanvas.offsetWidth*0.75);
-		camera.updateProjectionMatrix();
-		renderer.setSize( renderCanvas.offsetWidth, (renderCanvas.offsetWidth*0.75) );
-		renderer.setPixelRatio(window.devicePixelRatio);					
+		var WWidth  = window.innerWidth;
+		var WHeight = window.innerHeight;
 		
-		document.getElementById("composerRenderer").style.height = (renderCanvas.offsetWidth*0.75)+"px";
+		var height,width;
+		
+		width  = WWidth - WWidth*3/10;
+		height = width *0.75;
+ 		
+		if(height>WHeight-100){
+			height = WHeight-100;
+			width  = height/0.75;
+			
+			
+			
+		}
+		
+		camera.aspect = width/height;
+			
+		renderer.setSize( width,height );
+		renderer.setPixelRatio(window.devicePixelRatio);					
+		camera.updateProjectionMatrix();
+		
+		renderCanvas.style.marginLeft = ((WWidth - width ) /2) + "px";
+				
+		document.getElementById("composerRenderer").style.height = height+"px";
+		document.getElementById("composerRenderer").style.maxHeight = (window.innerHeight-100)+"px";
+		
+		
 		document.getElementById("menu").style.top   = (document.getElementById("canvasRender").offsetTop+document.getElementById("canvasRender").offsetHeight-document.getElementById("menu").offsetHeight-10)+"px";
 		document.getElementById("menu").style.left  = document.getElementById("canvasRender").offsetLeft+"px";
-		document.getElementById("menu").style.width = document.getElementById("canvasRender").offsetWidth+"px";
+		document.getElementById("menu").style.width = width+"px";
+		
 		
 	}
 				

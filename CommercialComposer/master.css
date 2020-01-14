@@ -89,6 +89,24 @@ nav.navbar-dark.bg-dark {
 
 }
 
+.cl1{
+	width:50% !important;
+}
+
+.cl2{
+	width:33% !important;
+}
+
+.cl3{
+	width:25% !important;
+}
+
+#footerF{
+	position : absolute;
+	width : 100%;
+	
+}
+
 #prezzo {
     font-size: 3vw;
     color: #e77600;
