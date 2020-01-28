@@ -274,7 +274,7 @@
 		camera 		 = new THREE.PerspectiveCamera( 60, renderCanvas.offsetWidth / (renderCanvas.offsetWidth*0.75), 0.01, 10);	
 		
 		renderer	 = new THREE.WebGLRenderer({antialias:true});	
-		renderer.setPixelRatio(  window.devicePixelRatio*2);					
+		renderer.setPixelRatio(  window.devicePixelRatio);					
 		
 		stats 		 = new Stats();
 										

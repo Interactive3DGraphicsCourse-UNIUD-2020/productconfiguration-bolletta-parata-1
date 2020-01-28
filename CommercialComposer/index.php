@@ -49,8 +49,6 @@
 
 	</div>
 	<br>
-	<br>
-	<br>
 
 	<?php 
 	include("composerInfo.html") ;
