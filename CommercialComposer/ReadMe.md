@@ -26,13 +26,13 @@ L' interfaccia si compone di un menu centrale che permetterà di scegliere :
 	* il materiale del quale sarà composto
 	* il colore del relativo materiale della 	superficie scelta
 	
-	![Image arrow](/img/menu.PNG)
+	![Image arrow](img/menu.PNG)
 	
 
 Con il mouse è possibile ruotare intorno all'oggetto, mentre con il touchpad è possibile effettuare uno zoom sull'oggetto. 
 
 Nella seconda parte dell'interfaccia è possibile avere un resoconto delle scelte effettuate con la relativa variazione di prezzo secondo i materiali utilizzati per comporre l'oggetto.
-![Image arrow](/img/resoconto.PNG)
+![Image arrow](img/resoconto.PNG)
 
 
 #### BRDF Implementate:
