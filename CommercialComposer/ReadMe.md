@@ -1,6 +1,6 @@
 ﻿# Progetto Commercial Composer Bolletta & Parata
 	
-![Image Preview](/img/preview.PNG)
+![Image Preview](CommercialComposer/img/preview.PNG)
 	
 ## Goals 
 The well-known ACME company has asked you to build a product  **Web visualizer / configurator**  for its new e-commerce site. Before giving you the job, ACME wants to evaluate how faithfully you can visualize and configure products. ACME sells everything, so you can choose whatever kind of product you want for the demonstration.
